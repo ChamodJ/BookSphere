@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import BookCard from "./Components/BookCard";
 import axios from "axios";
-import MoreDetailsCard from "./Components/MoreDetailsCard";
 
 function App() {
   const [searchKey, setSearchKey] = useState("");

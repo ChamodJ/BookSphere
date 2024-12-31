@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+
+
 const MoreDetailsCard = ({ showDetails, item, onClose }) => {
 
     if(!showDetails) {
@@ -67,6 +70,26 @@ const MoreDetailsCard = ({ showDetails, item, onClose }) => {
         </div>
       </div>
     );
+  };
+
+
+  MoreDetailsCard.propTypes = {
+    showDetails: PropTypes.bool.isRequired, 
+    item: PropTypes.shape({
+      volumeInfo: PropTypes.shape({
+        imageLinks: PropTypes.shape({
+          smallThumbnail: PropTypes.string,
+        }),
+        title: PropTypes.string.isRequired,
+        authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+        publishedDate: PropTypes.string,
+        language: PropTypes.string,
+        pageCount: PropTypes.number,
+        categories: PropTypes.arrayOf(PropTypes.string),
+        previewLink: PropTypes.string,
+      }).isRequired,
+    }).isRequired,
+    onClose: PropTypes.func.isRequired, 
   };
   
   export default MoreDetailsCard;
