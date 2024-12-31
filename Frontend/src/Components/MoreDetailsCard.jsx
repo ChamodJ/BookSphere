@@ -7,14 +7,14 @@ const MoreDetailsCard = ({ showDetails, item, onClose }) => {
         return null;
     }
 
-    let thumbnail = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
-    let title = item.volumeInfo.title
-    let authors = item.volumeInfo.authors[0]
-    let publishedDate = item.volumeInfo.publishedDate
-    let lan = item.volumeInfo.language
-    let pageCount = item.volumeInfo.pageCount
-    let categories = item.volumeInfo.categories[0]
-    let link = item.volumeInfo.previewLink
+    let thumbnail = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail || "../Assets/no_preview.jpg";
+    let title = item.volumeInfo.title || "No Title"
+    let authors = item.volumeInfo.authors[0]  || "No Tauthor"
+    let publishedDate = item.volumeInfo.publishedDate || "No published date"
+    let lan = item.volumeInfo.language || "No language"
+    let pageCount = item.volumeInfo.pageCount || "No page count"
+    let categories = item.volumeInfo.categories[0] || "No categories"
+    let link = item.volumeInfo.previewLink || null
 
     return (
       <div className="fixed inset-0 bg-black bg-opacity-20 flex justify-center items-center z-50">

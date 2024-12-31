@@ -1,22 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import BookCard from "./Components/BookCard";
 import axios from "axios";
 
 function App() {
-  const [searchKey, setSearchKey] = useState("");
+  const [searchKey, setSearchKey] = useState("all");
   const [bookData, setBookData] = useState([]);
 
   const apiKey = "AIzaSyDgZM16KvNyPOiKuZfq0FrcwqGcgOR32r0";
 
   const searchBook = () => {
+    console.log(searchKey);
+    if (searchKey.trim === null) {
+      setSearchKey("all");
+    }
     axios
       .get(
         `https://www.googleapis.com/books/v1/volumes?q=${searchKey}&key=${apiKey}`
       )
-      .then((res) => setBookData(res.data.items))
+      .then((res) => setBookData(res.data.items || []))
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    searchBook();
+  }, []);
 
   const searchEventListner = (evt) => {
     if (evt.key === "Enter") {
@@ -54,7 +62,7 @@ function App() {
                 className="w-full bg-white pl-2 text-base font-semibold outline-0 max-w-[1000px] border-2"
                 placeholder=""
                 id=""
-                onChange={setSearchKey}
+                onChange={(e) => setSearchKey(e.target.value)}
                 onKeyPress={searchEventListner}
               />
               <button
@@ -68,7 +76,11 @@ function App() {
           </div>
 
           <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-            {<BookCard book={bookData} />}
+            {bookData.length === 0 || bookData == null ? (
+              <p>No books found.</p>
+            ) : (
+              <BookCard book={bookData} />
+            )}
           </div>
         </div>
       </div>
