@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        MeowScript: ["Meow Script" , "serif"], 
+        poppins: ["Poppins", "serif"]
+      },
+    },
   },
   plugins: [],
 }
