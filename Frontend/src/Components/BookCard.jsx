@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const BookCard = ({ book }) => {
   //console.log(book);
   return (
@@ -30,5 +32,19 @@ const BookCard = ({ book }) => {
     </>
   );
 };
+
+BookCard.propTypes = {
+    book : PropTypes.arrayOf(
+        PropTypes.shape({
+            volumeInfo: PropTypes.shape({
+                title: PropTypes.string.isRequired,
+                authors: PropTypes.arrayOf(PropTypes.string),
+                imageLinks: PropTypes.shape({
+                    smallThumbnail: PropTypes.string,
+                }),
+            }).isRequired
+        })
+    ).isRequired
+}
 
 export default BookCard;
