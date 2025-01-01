@@ -23,19 +23,20 @@ function App() {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=all&key=${apiKey}`
-      )
-      .then((res) => setBookData(res.data.items || []))
-      .catch((error) => console.log(error));
+    searchBook()
+  }, [searchKey]) 
+
+  useEffect(() => {
+    searchBook()
   }, []);
 
+  /*
   const searchEventListner = (evt) => {
     if (evt.key === "Enter") {
       searchBook();
     }
   };
+  */
 
   return (
     <>
@@ -68,7 +69,7 @@ function App() {
                 placeholder=""
                 id=""
                 onChange={(e) => setSearchKey(e.target.value)}
-                onKeyPress={searchEventListner}
+                //onKeyPress={searchEventListner}
               />
               <button
                 className="bg-blue-500 p-2 rounded-tr-lg rounded-br-lg text-white font-semibold hover:bg-blue-800 transition-colors"
