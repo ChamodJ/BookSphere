@@ -9,7 +9,7 @@ const BookCard = ({ book }) => {
   const [selectedBook, setSelectedBook] = useState();
 
   if (!book || book.length === 0) {
-    return <p>No books found.</p>;
+    return <p className="text-center">No books found.</p>;
   }
 
   return (
@@ -34,7 +34,7 @@ const BookCard = ({ book }) => {
                   {item.volumeInfo.title || "No title"}
                 </h3>
                 <p className="text-gray-600 text-sm text-center">
-                  {item.volumeInfo.authors[0] || "No author"}
+                  {(item.volumeInfo.authors && item.volumeInfo.authors[0]) || "No author"}
                 </p>
                 <button
                   className="hover:brightness-110 hover:animate-pulse py-1 px-5 rounded-full bg-[#1E88E5] text-white text-sm"

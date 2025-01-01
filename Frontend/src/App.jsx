@@ -11,7 +11,7 @@ function App() {
 
   const searchBook = () => {
     console.log(searchKey);
-    if (searchKey.trim === null) {
+    if (searchKey === "") {
       setSearchKey("all");
     }
     axios
@@ -23,7 +23,12 @@ function App() {
   };
 
   useEffect(() => {
-    searchBook();
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=all&key=${apiKey}`
+      )
+      .then((res) => setBookData(res.data.items || []))
+      .catch((error) => console.log(error));
   }, []);
 
   const searchEventListner = (evt) => {
@@ -77,7 +82,7 @@ function App() {
 
           <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             {bookData.length === 0 || bookData == null ? (
-              <p>No books found.</p>
+              <p className="text-center">No books found.</p>
             ) : (
               <BookCard book={bookData} />
             )}

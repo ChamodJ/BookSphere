@@ -88,7 +88,7 @@ const MoreDetailsCard = ({ showDetails, item, onClose }) => {
         categories: PropTypes.arrayOf(PropTypes.string),
         previewLink: PropTypes.string,
       }).isRequired,
-    }).isRequired,
+    }),
     onClose: PropTypes.func.isRequired, 
   };
   
