@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <div className="font-poppins">
-        <div className=" bg-[#1E88E5] h-96 rounded-b-3xl text-center flex flex-col justify-center items-center">
+        <div className="bg-gradient-to-r from-[#6930c3] to-blue-500 h-96 rounded-b-3xl text-center flex flex-col justify-center items-center">
           <h1 className=" text-8xl font-MeowScript text-[#FFC107] font-bold tracking-wider mb-2 [-webkit-text-stroke:1p_black]">
             Book Sphere
           </h1>
@@ -54,7 +54,7 @@ function App() {
           <div className="flex items-center justify-center p-5">
             <div className="flex md:w-2/3">
               <div></div>
-              <div className="flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-2 border-gray-200 bg-white p-5">
+              <div className="hidden md:flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-2 border-gray-200 bg-white p-5">
                 <svg
                   viewBox="0 0 20 20"
                   aria-hidden="true"
